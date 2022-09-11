@@ -47,8 +47,7 @@ namespace Hw1Tests
         [InlineData("1", ";", "3")]
         public void TestMainInvalidData(params string[] values)
         {
-            Program.Main(values);
-            Assert.True(Program.IsWrong);
+            Assert.Equal(-1, Program.Main(values));
         }
 
         [Fact]
