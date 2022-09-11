@@ -37,16 +37,24 @@ namespace Hw1Tests
             //assert
             Assert.Throws<ArgumentException>(() => Parser.ParseCalcArguments(args, out _, out _, out _));
         }
-        
-        [Fact]
-        public void TestForCoverage()
-        {
-            string[] args = { "a", "b", "c" };
 
-            Assert.Throws<ArgumentException>(() =>
-                Program.Parse(args, out double val1, out double val3, out CalculatorOperation val2));
+        [Theory]
+        [InlineData("a", "b", "q")]
+        [InlineData("a", "+", "q")]
+        [InlineData("a", "+", "3")]
+        public void TestMainInvalidDataDouble(string value1, string value2, string value3)
+        {
+            Assert.Throws<ArgumentException>(() => Program.Main(new[] { value1, value1, value1 }));
         }
-        
+
+        [Theory]
+        [InlineData("1", "+", "q")]
+        [InlineData("1", ";", "3")]
+        public void TestMainInvalidDataCalc(string value1, string value2, string value3)
+        {
+            Assert.Throws<InvalidOperationException>(() => Program.Main(new[] { value1, value1, value1 }));
+        }
+
         [Fact]
         public void TestParserWrongOperation()
         {
