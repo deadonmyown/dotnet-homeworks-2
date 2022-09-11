@@ -24,8 +24,7 @@ namespace Hw1Tests
         public void TestMainValidData()
         {
             Program.Main(new[] { "10", "+", "5" });
-            Assert.Equal("10+5", Program.Text.ToString());
-            Assert.Equal(15, Program.Result);
+            Assert.False(Program.IsWrong);
         }
         
         [Fact]

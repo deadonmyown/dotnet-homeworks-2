@@ -6,17 +6,23 @@ namespace Hw1
 {
     public class Program
     {
-        public static double Result { get; private set; }
-        public static StringBuilder Text { get; } = new StringBuilder();
+        public static bool IsWrong { get; private set; }
 
         public static void Main(string[] args)
         {
-            Text.Clear();
-            for (int i = 0; i < args.Length; i++)
-                Text.Append(args[i]);
-            Console.WriteLine(Text.ToString());
-            Parser.ParseCalcArguments(args, out double val1, out CalculatorOperation val2, out double val3);
-            Result = Calculator.Calculate(val1, val2, val3);
+            IsWrong = false;
+            try
+            {
+                Parser.ParseCalcArguments(args, out double val1, out CalculatorOperation val2, out double val3);
+                var result = Calculator.Calculate(val1, val2, val3);
+                Console.WriteLine(result);
+                IsWrong = false;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Wrong data: {ex.Message}");
+                IsWrong = true;
+            }
         }
     }
 } 
