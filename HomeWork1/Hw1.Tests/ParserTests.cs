@@ -42,17 +42,18 @@ namespace Hw1Tests
         [InlineData("a", "b", "q")]
         [InlineData("a", "+", "q")]
         [InlineData("a", "+", "3")]
-        public void TestMainInvalidDataDouble(string value1, string value2, string value3)
+        [InlineData("1", "+", "q")]
+        [InlineData("a", "b", "c", "q")]
+        public void TestMainInvalidData(params string[] values)
         {
-            Assert.Throws<ArgumentException>(() => Program.Main(new[] { value1, value1, value1 }));
+            Assert.Throws<ArgumentException>(() => Program.Main(values));
         }
 
         [Theory]
-        [InlineData("1", "+", "q")]
         [InlineData("1", ";", "3")]
-        public void TestMainInvalidDataCalc(string value1, string value2, string value3)
+        public void TestMainInvalidDataCalc(params string[] values)
         {
-            Assert.Throws<InvalidOperationException>(() => Program.Main(new[] { value1, value1, value1 }));
+            Assert.Throws<InvalidOperationException>(() => Program.Main(values));
         }
 
         [Fact]
