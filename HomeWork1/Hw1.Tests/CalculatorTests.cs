@@ -19,6 +19,15 @@ namespace Hw1Tests
             //assert
             Assert.Equal(expectedValue, actual);
         }
+
+        [Theory]
+        [InlineData(10, 5, CalculatorOperation.Plus, 15)]
+        public void TestCoverage(int value1, int value2, CalculatorOperation operation, int expectedValue)
+        {
+            double actual = Program.Calculate(value1, value2, operation);
+            
+            Assert.Equal(expectedValue, actual);
+        }
         
         [Fact]
         public void TestInvalidOperation()

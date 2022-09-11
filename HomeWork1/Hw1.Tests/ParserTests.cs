@@ -39,6 +39,15 @@ namespace Hw1Tests
         }
         
         [Fact]
+        public void TestForCoverage()
+        {
+            string[] args = { "a", "b", "c" };
+
+            Assert.Throws<ArgumentException>(() =>
+                Program.Parse(args, out double val1, out double val3, out CalculatorOperation val2));
+        }
+        
+        [Fact]
         public void TestParserWrongOperation()
         {
             // arrange
