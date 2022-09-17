@@ -37,7 +37,19 @@ namespace Hw1Tests
             //assert
             Assert.Throws<ArgumentException>(() => Parser.ParseCalcArguments(args, out _, out _, out _));
         }
-        
+
+        [Theory]
+        [InlineData("a", "b", "q")]
+        [InlineData("a", "+", "q")]
+        [InlineData("a", "+", "3")]
+        [InlineData("1", "+", "q")]
+        [InlineData("a", "b", "c", "q")]
+        [InlineData("1", ";", "3")]
+        public void TestMainInvalidData(params string[] values)
+        {
+            Assert.Equal(-1, Program.Main(values));
+        }
+
         [Fact]
         public void TestParserWrongOperation()
         {

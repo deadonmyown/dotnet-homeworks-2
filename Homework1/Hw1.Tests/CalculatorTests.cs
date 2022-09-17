@@ -19,6 +19,12 @@ namespace Hw1Tests
             //assert
             Assert.Equal(expectedValue, actual);
         }
+
+        [Fact]
+        public void TestMainValidData()
+        {
+            Assert.Equal(0, Program.Main(new[] { "10", "+", "5" }));
+        }
         
         [Fact]
         public void TestInvalidOperation()
