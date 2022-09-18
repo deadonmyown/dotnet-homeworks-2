@@ -21,7 +21,7 @@
         ldc.i4.3
         beq Divide
         
-        newobj instance void [mscorlib]System.ArgumentOutOfRangeException::.ctor()
+        newobj instance void [System.Runtime]System.ArgumentOutOfRangeException::.ctor()
         throw
         
         Add:

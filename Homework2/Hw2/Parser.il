@@ -6,6 +6,8 @@
     [out] valuetype Hw2.CalculatorOperation& operation, 
     [out] float64& val2) cil managed
     {
+        .maxstack 3
+    
         ldarg.0
         call bool Hw2.Parser::IsArgLengthSupported(string[])
         brfalse.s Throw
@@ -14,14 +16,14 @@
         ldc.i4.0
         ldelem.ref
         ldarg.1
-        call bool [mscorlib]System.Double::TryParse(string, float64&)
+        call bool [System.Runtime]System.Double::TryParse(string, float64&)
         brfalse.s Throw
         
         ldarg.0
         ldc.i4.2
         ldelem.ref
         ldarg.3
-        call bool [mscorlib]System.Double::TryParse(string, float64&)
+        call bool [System.Runtime]System.Double::TryParse(string, float64&)
         brfalse.s Throw
         
         ldarg.2
@@ -33,9 +35,7 @@
         ret
     
         Throw:
-        ldstr "Govno sdelal Parse Args"
-        call void [mscorlib]System.Console::WriteLine(string)
-        newobj instance void [mscorlib]System.ArgumentException::.ctor()
+        newobj instance void [System.Runtime]System.ArgumentException::.ctor()
         throw
     }
     
@@ -58,27 +58,25 @@
         
         ldarg.0
         ldstr "+"
-        call bool [mscorlib]System.String::op_Equality(string, string)
+        call bool [System.Runtime]System.String::op_Equality(string, string)
         brtrue.s Plus
         
         ldarg.0
         ldstr "-"
-        call bool [mscorlib]System.String::op_Equality(string, string)
+        call bool [System.Runtime]System.String::op_Equality(string, string)
         brtrue.s Minus
         
         ldarg.0
         ldstr "*"
-        call bool [mscorlib]System.String::op_Equality(string, string)
+        call bool [System.Runtime]System.String::op_Equality(string, string)
         brtrue.s Multiply
         
         ldarg.0
         ldstr "/"
-        call bool [mscorlib]System.String::op_Equality(string, string)
+        call bool [System.Runtime]System.String::op_Equality(string, string)
         brtrue.s Divide
         
-        ldstr "Govno sdelal Parser"
-        call void [mscorlib]System.Console::WriteLine(string)
-        newobj instance void [mscorlib]System.InvalidOperationException::.ctor()
+        newobj instance void [System.Runtime]System.InvalidOperationException::.ctor()
         throw
         
         Plus:
