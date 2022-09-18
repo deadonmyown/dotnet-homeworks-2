@@ -2,7 +2,7 @@
 
 
 ![.NET](https://github.com/deadonmyown/dotnet-homeworks-2/actions/workflows/dotnet.yml/badge.svg)
-[![codecov](https://codecov.io/gh/deadonmyown/dotnet-homeworks-2/branch/HW1/graph/badge.svg?token=2sgIAqKhak)](https://codecov.io/gh/deadonmyown/dotnet-homeworks-2)
+[![codecov](https://codecov.io/gh/deadonmyown/dotnet-homeworks-2/branch/master/graph/badge.svg)](https://codecov.io/gh/deadonmyown/dotnet-homeworks-2)
 
 ## Как устроены Actions
 1. ***build***: *Проверка: собирается ли проект.*
