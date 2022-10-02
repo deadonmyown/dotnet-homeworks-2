@@ -23,6 +23,8 @@ jobs:
         run: dotnet test --filter FullyQualifiedName!~Hw13Tests --no-build --verbosity normal --collect:"XPlat Code Coverage" --settings .github/coverlet.runsettings
       - name: Codecov
         uses: codecov/codecov-action@v3.1.0
+        with:
+            file: Homework2/Coverage/TestsCoverage.xml
 
   test:
     runs-on: ubuntu-latest
@@ -36,4 +38,4 @@ jobs:
         if: success() || failure()
         with:
           name: test-results
-          path: HomeWork*/Hw*Tests/TestResults/*.trx
+          path: Homework*/Hw*.Tests/TestResults/*.trx
