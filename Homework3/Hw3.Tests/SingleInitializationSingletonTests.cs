@@ -41,9 +41,6 @@ public class SingleInitializationSingletonTests
     public void DoubleInitializationAttemptThrowsException()
     {
         SingleInitializationSingleton.Initialize(2);
-        Assert.Throws<InvalidOperationException>(() =>
-        {
-            SingleInitializationSingleton.Initialize(3);
-        });
+        Assert.Throws<InvalidOperationException>(() => SingleInitializationSingleton.Initialize(3));
     }
 }
