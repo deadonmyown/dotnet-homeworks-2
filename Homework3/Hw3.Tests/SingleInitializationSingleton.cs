@@ -7,7 +7,7 @@ public class SingleInitializationSingleton
 {
     private static readonly object Locker = new();
 
-    private static Lazy<SingleInitializationSingleton> lazy = new Lazy<SingleInitializationSingleton>(() => new SingleInitializationSingleton());
+    private static Lazy<SingleInitializationSingleton> _lazy = new Lazy<SingleInitializationSingleton>(() => new SingleInitializationSingleton());
 
     private static volatile bool _isInitialized = false;
 
@@ -26,7 +26,7 @@ public class SingleInitializationSingleton
     {
         lock (Locker)
         {
-            lazy = new Lazy<SingleInitializationSingleton>(() => new SingleInitializationSingleton());
+            _lazy = new Lazy<SingleInitializationSingleton>(() => new SingleInitializationSingleton());
             _isInitialized = false;
         }
     }
@@ -34,19 +34,15 @@ public class SingleInitializationSingleton
     public static void Initialize(int delay)
     {
         if (!_isInitialized)
-        {
             lock (Locker)
-            {
                 if (!_isInitialized)
                 {
-                    lazy = new Lazy<SingleInitializationSingleton>(() => new SingleInitializationSingleton(delay));
+                    _lazy = new Lazy<SingleInitializationSingleton>(() => new SingleInitializationSingleton(delay));
                     _isInitialized = true;
                     return;
                 }
-            }
-        }
         throw new InvalidOperationException();
     }
 
-    public static SingleInitializationSingleton Instance => lazy.Value;
+    public static SingleInitializationSingleton Instance => _lazy.Value;
 }

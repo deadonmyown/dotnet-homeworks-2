@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Hw3.Mutex;
@@ -31,6 +32,7 @@ public class ConcurrencyTests
         Assert.Equal(expected, Concurrency.Index);
     }
     
+    [ExcludeFromCodeCoverage]
     [Fact (Skip = "Non-deterministic behavior")]
     public void EightThreads_100KIterations_RaceIsReproduced()
     {
@@ -85,6 +87,7 @@ public class ConcurrencyTests
         }
     }
 
+    [ExcludeFromCodeCoverage]
     public void Semaphore()
     {
         // TODO: homework+
@@ -97,6 +100,7 @@ public class ConcurrencyTests
         Assert.Equal(expected, Concurrency.Index);
     }
 
+    [ExcludeFromCodeCoverage]
     public void NamedSemaphore_InterprocessCommunication()
     {
         // TODO: homework+
