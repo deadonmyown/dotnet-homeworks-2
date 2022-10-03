@@ -65,8 +65,8 @@ public class ConcurrencyTests
         _toh.WriteLine($"Expected: {expected}; Actual: {Concurrency.Index}");
     }
 
-    [Fact]
     [ExcludeFromCodeCoverage]
+    [Fact]
     public void EightThreads_100KIterations_InterlockedIsFasterThanLock_Or_IsIt()
     {
         var isM1Mac = OperatingSystem.IsMacOS() &&
