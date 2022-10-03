@@ -10,6 +10,7 @@ public class SingleInitializationSingleton
     private static Lazy<SingleInitializationSingleton> _lazy = new Lazy<SingleInitializationSingleton>(() => new SingleInitializationSingleton());
 
     private static volatile bool _isInitialized = false;
+    public static SingleInitializationSingleton Instance => _lazy.Value;
 
     public const int DefaultDelay = 3_000;
     
@@ -43,6 +44,4 @@ public class SingleInitializationSingleton
                 }
         throw new InvalidOperationException();
     }
-
-    public static SingleInitializationSingleton Instance => _lazy.Value;
 }
