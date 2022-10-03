@@ -66,6 +66,7 @@ public class ConcurrencyTests
     }
 
     [Fact]
+    [ExcludeFromCodeCoverage]
     public void EightThreads_100KIterations_InterlockedIsFasterThanLock_Or_IsIt()
     {
         var isM1Mac = OperatingSystem.IsMacOS() &&

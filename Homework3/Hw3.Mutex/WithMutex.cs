@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.IO.MemoryMappedFiles;
 
 namespace Hw3.Mutex;
@@ -36,6 +37,7 @@ public class WithMutex: IDisposable
         GC.SuppressFinalize(this);
     }
     
+    [ExcludeFromCodeCoverage]
     protected virtual void Dispose(bool disposing)
     {
         if (_disposed)
@@ -55,5 +57,6 @@ public class WithMutex: IDisposable
         _disposed = true;
     }
     
+    [ExcludeFromCodeCoverage]
     ~WithMutex() => Dispose(false);
 }
