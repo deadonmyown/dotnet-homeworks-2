@@ -28,10 +28,11 @@ let tryParse (s: string) =
     | _ -> ArgumentException() |> raise
 
 let parseCalcArguments(args : string[]) =
-    if(not (isArgLengthSupported args)) then
-        ArgumentException() |> raise
-    let val1 = tryParse args[0]
-    let val2 = tryParse args[2]
-    let operation = parseOperation args[1]
-    {arg1 = val1; arg2 = val2; operation = operation}
+    match isArgLengthSupported args with
+    | true -> let val1 = tryParse args[0]
+              let val2 = tryParse args[2]
+              let operation = parseOperation args[1]
+              {arg1 = val1; arg2 = val2; operation = operation}
+    | false -> ArgumentException() |> raise
+    
 
