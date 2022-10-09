@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Root CoveredStatements="404" TotalStatements="410" CoveragePercent="99" ReportType="DetailedXml" DotCoverVersion="2022.2.2">
+<Root CoveredStatements="405" TotalStatements="410" CoveragePercent="99" ReportType="DetailedXml" DotCoverVersion="2022.2.2">
   <FileIndices>
     <File Index="1" Name="C:\Repositories\.NET\dotnet-homeworks-2\Homework3\Hw3.Tests\Concurrency.cs" ChecksumAlgorithm="SHA256" Checksum="E597977BFCDFF7BC0A7226C4223806929AE81C6B4233EAA5F61D93397DD74F70" />
     <File Index="2" Name="C:\Repositories\.NET\dotnet-homeworks-2\Homework3\Hw3.Tests\ConcurrencyTests.cs" ChecksumAlgorithm="SHA256" Checksum="BE7DA5CCCA89A5D3E647041CE5C9CC1FFE1966DC7D844F8C4735B53712A81BA0" />
@@ -31,9 +31,9 @@
     <File Index="28" Name="C:\Repositories\.NET\dotnet-homeworks-2\Homework3\Hw3.Mutex\obj\Debug\net6.0\Hw3.Mutex.GlobalUsings.g.cs" ChecksumAlgorithm="SHA256" Checksum="F3F134E9E825E3E7268090F58B1AF2BDA2DE513F61A09C56F48B9B8D08612ABC" />
     <File Index="29" Name="C:\Repositories\.NET\dotnet-homeworks-2\Homework3\Hw3.Mutex\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" ChecksumAlgorithm="SHA256" Checksum="9203CF07D36B1AA135DA4A5F86286F34432156CBAF6518C2909849EB7D577381" />
     <File Index="30" Name="C:\Repositories\.NET\dotnet-homeworks-2\Homework3\Hw3.Mutex\obj\Debug\net6.0\Hw3.Mutex.AssemblyInfo.cs" ChecksumAlgorithm="SHA256" Checksum="7DE100A04FDA6D5045F74A1EDA0509FC112E70FF2C8639E503BE783B9D2454B7" />
-    <File Index="33" Name="C:\Repositories\.NET\dotnet-homeworks-2\Homework4\Hw4\Calculator.fs" ChecksumAlgorithm="SHA256" Checksum="D4DB889A097CA6BD3B0D2CA00818C89C042418CA818D3C8CA3EB4D4A6F86E485" />
-    <File Index="32" Name="C:\Repositories\.NET\dotnet-homeworks-2\Homework4\Hw4\Parser.fs" ChecksumAlgorithm="SHA256" Checksum="839B053396CC0D4FFED22950D080C49B9677C30A360C9431F0EA7F58765815B4" />
     <File Index="31" Name="C:\Repositories\.NET\dotnet-homeworks-2\Homework4\Hw4\Program.fs" ChecksumAlgorithm="SHA256" Checksum="6551B5A94E7A393D32A673895733679981FAEBC43C42EF71E848C9CCB0471D21" />
+    <File Index="32" Name="C:\Repositories\.NET\dotnet-homeworks-2\Homework4\Hw4\Parser.fs" ChecksumAlgorithm="SHA256" Checksum="839B053396CC0D4FFED22950D080C49B9677C30A360C9431F0EA7F58765815B4" />
+    <File Index="33" Name="C:\Repositories\.NET\dotnet-homeworks-2\Homework4\Hw4\Calculator.fs" ChecksumAlgorithm="SHA256" Checksum="D4DB889A097CA6BD3B0D2CA00818C89C042418CA818D3C8CA3EB4D4A6F86E485" />
     <File Index="34" Name="C:\Users\xPr1e\.nuget\packages\microsoft.net.test.sdk\17.1.0\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.fs" ChecksumAlgorithm="SHA256" Checksum="D13732D81823DB73F4A483875C2B9BF34A9D8C2C78C74F993B592DD39523AF1F" />
     <File Index="35" Name="C:\Repositories\.NET\dotnet-homeworks-2\Homework4\Hw4.Tests\ProgramTests.fs" ChecksumAlgorithm="SHA256" Checksum="0CA738E54E3A2CC0707140A4232CBDB966F9650049083DC1E2BB7B1DB1697890" />
     <File Index="36" Name="C:\Repositories\.NET\dotnet-homeworks-2\Homework4\Hw4.Tests\ParserTests.fs" ChecksumAlgorithm="SHA256" Checksum="5EFCDC76FF1ECFE0D1521F68853EA9C4BB3FB709D0E8BD7C2DD305765024F679" />
@@ -308,8 +308,8 @@
       </Method>
     </Type>
   </Assembly>
-  <Assembly Name="Hw3.Tests" CoveredStatements="201" TotalStatements="203" CoveragePercent="99">
-    <Namespace Name="Hw3.Tests" CoveredStatements="201" TotalStatements="203" CoveragePercent="99">
+  <Assembly Name="Hw3.Tests" CoveredStatements="202" TotalStatements="203" CoveragePercent="99">
+    <Namespace Name="Hw3.Tests" CoveredStatements="202" TotalStatements="203" CoveragePercent="99">
       <Type Name="Concurrency" CoveredStatements="82" TotalStatements="82" CoveragePercent="100">
         <Type Name="&lt;&gt;c" CoveredStatements="14" TotalStatements="14" CoveragePercent="100">
           <Method Name="&lt;DoIncrement&gt;b__11_0(System.Threading.Thread):System.Void" CoveredStatements="1" TotalStatements="1" CoveragePercent="100">
@@ -438,7 +438,7 @@
           <Statement FileIndex="1" Line="33" Column="5" EndLine="33" EndColumn="6" Covered="True" />
         </Method>
       </Type>
-      <Type Name="ConcurrencyTests" CoveredStatements="55" TotalStatements="56" CoveragePercent="98">
+      <Type Name="ConcurrencyTests" CoveredStatements="56" TotalStatements="56" CoveragePercent="100">
         <Type Name="&lt;Mutex&gt;d__13" CoveredStatements="18" TotalStatements="18" CoveragePercent="100">
           <Method Name="MoveNext():System.Void" CoveredStatements="18" TotalStatements="18" CoveragePercent="100">
             <Statement FileIndex="2" Line="121" Column="5" EndLine="121" EndColumn="6" Covered="True" />
@@ -502,11 +502,11 @@
           <Statement FileIndex="2" Line="49" Column="9" EndLine="49" EndColumn="78" Covered="True" />
           <Statement FileIndex="2" Line="50" Column="5" EndLine="50" EndColumn="6" Covered="True" />
         </Method>
-        <Method Name="FiveThreads_100Iterations_RaceIsHardToReproduce():System.Void" CoveredStatements="3" TotalStatements="4" CoveragePercent="75">
+        <Method Name="FiveThreads_100Iterations_RaceIsHardToReproduce():System.Void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100">
           <Statement FileIndex="2" Line="30" Column="5" EndLine="30" EndColumn="6" Covered="True" />
           <Statement FileIndex="2" Line="31" Column="9" EndLine="31" EndColumn="55" Covered="True" />
           <Statement FileIndex="2" Line="32" Column="9" EndLine="32" EndColumn="51" Covered="True" />
-          <Statement FileIndex="2" Line="33" Column="5" EndLine="33" EndColumn="6" Covered="False" />
+          <Statement FileIndex="2" Line="33" Column="5" EndLine="33" EndColumn="6" Covered="True" />
         </Method>
         <Method Name="GetProcessStartInfo():System.Diagnostics.ProcessStartInfo" CoveredStatements="3" TotalStatements="3" CoveragePercent="100">
           <Statement FileIndex="2" Line="150" Column="5" EndLine="150" EndColumn="6" Covered="True" />
