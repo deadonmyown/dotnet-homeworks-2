@@ -10,8 +10,8 @@ let throwExc (exc: Exception) =
 [<EntryPoint>]
 let main (args: string[]) =
     try
-        let parsedData = Parser.parseCalcArguments args
-        printfn $"{Calculator.calculate parsedData.arg1 parsedData.operation parsedData.arg2}"
+        args |> Parser.parseCalcArguments |> fun parsedData ->
+            printfn $"{Calculator.calculate parsedData.arg1 parsedData.operation parsedData.arg2}"
         0
     with
         | :? ArgumentException as exc -> throwExc exc
