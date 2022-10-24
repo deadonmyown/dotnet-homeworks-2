@@ -3,7 +3,9 @@
 open System
 open System.Globalization
 open Hw6.Calculator
+open System.Diagnostics.CodeAnalysis
 
+[<ExcludeFromCodeCoverage>]
 let isArgLengthSupported (args:string[]): Result<'a,'b> =
     match args.Length with
     | 3 -> Ok args

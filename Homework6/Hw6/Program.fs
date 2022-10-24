@@ -14,6 +14,7 @@ open Microsoft.Extensions.DependencyInjection
 open Giraffe
 open Hw6
 
+[<ExcludeFromCodeCoverage>]
 let getCalculatorResult (query: string[]) =
     match Parser.parseCalcArguments query with
     | Ok (arg1, operation, arg2) -> Ok $"{Calculator.calculate arg1 operation arg2}"
@@ -33,6 +34,7 @@ let calculatorHandler: HttpHandler =
         | Ok ok -> (setStatusCode 200 >=> text (ok.ToString())) next ctx
         | Error error -> (setStatusCode 400 >=> text error) next ctx
 
+[<ExcludeFromCodeCoverage>]
 let webApp =
     choose [
         GET >=> choose [
@@ -49,6 +51,7 @@ type Startup() =
     member _.Configure (app : IApplicationBuilder) (_ : IHostEnvironment) (_ : ILoggerFactory) =
         app.UseGiraffe webApp
         
+[<ExcludeFromCodeCoverage>]
 [<EntryPoint>]
 let main _ =
     Host
