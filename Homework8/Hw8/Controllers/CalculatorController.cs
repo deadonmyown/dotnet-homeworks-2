@@ -17,14 +17,13 @@ public class CalculatorController : Controller
     {
         if (!Parser.Parser.IsArgsCountSupported(Request.Query.Count))
             return BadRequest(Messages.InvalidAmountOfData);
-        var result = Parser.Parser.ParseCalcArguments(val1, operation, val2);
+        (ParserResult result, ParserArgs? args) result = Parser.Parser.ParseCalcArguments(val1, operation, val2);
         return result switch
         {
-            (ParserResult.Success, ParserArgs parserArgs) => Ok(calculator.Calculate(parserArgs.Value1,
-                parserArgs.Operation, parserArgs.Value2)),
             (ParserResult.InvalidNumber, _) => BadRequest(Messages.InvalidNumberMessage),
             (ParserResult.InvalidOperation, _) => BadRequest(Messages.InvalidOperationMessage),
-            (ParserResult.DivisionByZero, _) => BadRequest(Messages.DivisionByZeroMessage)
+            (ParserResult.DivisionByZero, _) => BadRequest(Messages.DivisionByZeroMessage),
+            _ => Ok(calculator.Calculate(result.args!.Value1, result.args.Operation, result.args.Value2))
         };
     }
 
