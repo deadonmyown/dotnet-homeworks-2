@@ -11,6 +11,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllersWithViews();
+        builder.Services.AddScoped<ICalculator, CalculatorImpl>();
 
         var app = builder.Build();
 
@@ -29,6 +30,9 @@ public class Program
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Calculator}/{action=Index}");
+        app.MapControllerRoute(
+            name: "calculate",
+            pattern: "{controller=Calculator}/{action=Calculate}");
 
         app.Run();
     }
