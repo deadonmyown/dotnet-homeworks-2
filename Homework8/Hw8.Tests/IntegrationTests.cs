@@ -48,4 +48,13 @@ public class IntegrationTests: IClassFixture<WebApplicationFactory<Program>>
         var actual = await response.Content.ReadAsStringAsync();
         Assert.Equal(expected, actual);
     }
+    
+    [Theory]
+    [InlineData(Messages.InvalidAmountOfData)]
+    public async Task Calculate_IncorrectAmountOfArguments_ExceptionStringReturned(string expected)
+    {
+        var response = await _client.GetAsync($"{_url}/Calculator/Calculate");
+        var actual = await response.Content.ReadAsStringAsync();
+        Assert.Equal(expected, actual);
+    }
 }
