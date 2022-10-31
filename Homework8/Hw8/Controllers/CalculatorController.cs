@@ -10,21 +10,27 @@ namespace Hw8.Controllers;
 
 public class CalculatorController : Controller
 {
+    private IParser _parser;
+    public CalculatorController(IParser parser) => _parser = parser; 
+    
     public ActionResult<double> Calculate([FromServices] ICalculator calculator,
         [FromQuery] string val1,
         [FromQuery] string operation,
         [FromQuery] string val2)
     {
-        if (!Parser.Parser.IsArgsCountSupported(Request.Query.Count))
-            return BadRequest(Messages.InvalidAmountOfData);
-        (ParserResult result, ParserArgs? args) result = Parser.Parser.ParseCalcArguments(val1, operation, val2);
-        return result switch
+        try
         {
-            (ParserResult.InvalidNumber, _) => BadRequest(Messages.InvalidNumberMessage),
-            (ParserResult.InvalidOperation, _) => BadRequest(Messages.InvalidOperationMessage),
-            (ParserResult.DivisionByZero, _) => BadRequest(Messages.DivisionByZeroMessage),
-            _ => Ok(calculator.Calculate(result.args!.Value1, result.args.Operation, result.args.Value2))
-        };
+            if (!_parser.IsArgsCountSupported(Request.Query.Count))
+                return BadRequest(Messages.InvalidAmountOfData);
+
+            _parser.ParseCalcArguments(out double parsedVal1, out Operation parsedOperation,
+                out double parsedVal2, val1, operation, val2);
+            return Ok(calculator.Calculate(parsedVal1, parsedOperation, parsedVal2));
+        }
+        catch (Exception ex) when (ex is ArgumentException || ex is InvalidOperationException || ex is DivideByZeroException)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [ExcludeFromCodeCoverage]

@@ -2,9 +2,9 @@
 using Hw8.Calculator;
 namespace Hw8.Parser;
 
-public class Parser
+public class Parser : IParser
 {
-    public static Operation ParseOperation(string arg)
+    private Operation ParseOperation(string arg)
     {
         return arg.ToLower() switch
         {
@@ -16,19 +16,20 @@ public class Parser
         };
     }
 
-    public static bool IsArgsCountSupported(int argsCount) => argsCount == 3;
+    public bool IsArgsCountSupported(int argsCount) => argsCount == 3;
 
-    public static (ParserResult, ParserArgs?) ParseCalcArguments(params string[] args)
+    public void ParseCalcArguments(out double val1, out Operation operation, out double val2, params string[] args)
     {
-        Operation operation = ParseOperation(args[1]);
-        if (!Double.TryParse(args[0], NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture,
-                out double val1) || !Double.TryParse(args[2], NumberStyles.AllowDecimalPoint,
-                CultureInfo.InvariantCulture, out double val2))
-            return (ParserResult.InvalidNumber, null);
+        if (!Double.TryParse(args[0], NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out val1) 
+            || !Double.TryParse(args[2], NumberStyles.AllowDecimalPoint,
+                CultureInfo.InvariantCulture, out  val2))
+            throw new ArgumentException(Messages.InvalidNumberMessage);
+        
+        operation = ParseOperation(args[1]);
         if (operation == Operation.Invalid)
-            return (ParserResult.InvalidOperation, null);
+            throw new InvalidOperationException(Messages.InvalidOperationMessage);
+
         if (operation == Operation.Divide && val2 < Double.Epsilon)
-            return (ParserResult.DivisionByZero, null);
-        return (ParserResult.Success, new ParserArgs(val1, operation, val2));
+            throw new DivideByZeroException(Messages.DivisionByZeroMessage);
     }
 }

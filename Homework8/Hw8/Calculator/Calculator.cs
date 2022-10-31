@@ -1,6 +1,6 @@
 ﻿namespace Hw8.Calculator;
 
-public class CalculatorImpl : ICalculator
+public class Calculator : ICalculator
 {
     public double Plus(double val1, double val2) => val1 + val2;
 
