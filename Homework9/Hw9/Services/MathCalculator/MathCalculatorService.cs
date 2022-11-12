@@ -11,15 +11,11 @@ public class MathCalculatorService : IMathCalculatorService
     {
         try
         {
-            var list = Tokenizer.Parse(expression);
-            var postfixList = PostfixNotation.Sort(list);
-            var expressionTree = ExpressionTree.ConvertTokensToExpression(postfixList);
-
-            var taskExpression = await Task.Run(() => new OldExpressionVisitor().Visit(expressionTree));
-            /*var visitor = new MathExpressionVisitor();
-            var dictResult = visitor.DictionaryVisit(expressionTree);
-            var result = await dictResult[expressionTree].Value;*/
-            var listExpression = new ListExpression(expressionTree);
+            var list = await Task.Run(() => Tokenizer.Parse(expression));
+            var postfixList = await Task.Run(() => PostfixNotation.Sort(list));
+            var expressionTree = await Task.Run(() => ExpressionTree.ConvertTokensToExpression(postfixList));
+            
+            var listExpression = await Task.Run(() => new ListExpression(expressionTree));
             var result = await MathExpressionVisitor.VisitAsync(listExpression.Expressions);
             return new CalculationMathExpressionResultDto(result);
         }
