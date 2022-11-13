@@ -130,6 +130,7 @@ public static class Tokenizer
         _ => false
     };
 
+    [ExcludeFromCodeCoverage]
     private static void CheckCorrectFormat(List<IToken> tokens)
     {
         if (CheckMathOperation(tokens[0].TokenType))
