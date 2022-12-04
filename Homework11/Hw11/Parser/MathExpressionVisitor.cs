@@ -5,23 +5,21 @@ namespace Hw11.Parser;
 
 public static class MathExpressionVisitor
 {
-    private static Dictionary<Expression, Lazy<Task<double>>> nodes;
-
     public static async Task<double> VisitAsync(List<Expression> expressionList)
     {
-        nodes = new Dictionary<Expression, Lazy<Task<double>>>();
+        var nodes = new Dictionary<Expression, Lazy<Task<double>>>();
 
         for (int i = 0; i < expressionList.Count; i++)
         {
             var index = i;
             nodes[expressionList[i]] =
-                new Lazy<Task<double>>(async () => await HandleExpression((dynamic)expressionList[index]));
+                new Lazy<Task<double>>(async () => await HandleExpression((dynamic)expressionList[index], nodes));
         }
 
         return await nodes[expressionList[0]].Value;
     }
 
-    private static async Task<double> HandleExpression(BinaryExpression binaryExpression)
+    private static async Task<double> HandleExpression(BinaryExpression binaryExpression, Dictionary<Expression, Lazy<Task<double>>> nodes)
     {
         await Task.WhenAll(nodes[binaryExpression.Left].Value, nodes[binaryExpression.Right].Value);
         await Task.Delay(1000);
@@ -29,7 +27,7 @@ public static class MathExpressionVisitor
             await nodes[binaryExpression.Right].Value);
     } 
     
-    private static async Task<double> HandleExpression(ConstantExpression constantExpression)
+    private static async Task<double> HandleExpression(ConstantExpression constantExpression, Dictionary<Expression, Lazy<Task<double>>> nodes)
     {
         return (double)constantExpression.Value;
     }
