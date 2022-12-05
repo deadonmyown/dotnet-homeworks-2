@@ -5,29 +5,29 @@ namespace Hw11.Parser;
 
 public static class MathExpressionVisitor
 {
+    private static readonly Dictionary<Expression, Lazy<Task<double>>> _nodes = new();
+    
     public static async Task<double> VisitAsync(List<Expression> expressionList)
     {
-        var nodes = new Dictionary<Expression, Lazy<Task<double>>>();
-
         for (int i = 0; i < expressionList.Count; i++)
         {
             var index = i;
-            nodes[expressionList[i]] =
-                new Lazy<Task<double>>(async () => await HandleExpression((dynamic)expressionList[index], nodes));
+            _nodes[expressionList[index]] =
+                new Lazy<Task<double>>(async () => await HandleExpression((dynamic)expressionList[index]));
         }
 
-        return await nodes[expressionList[0]].Value;
+        return await _nodes[expressionList[0]].Value;
     }
 
-    private static async Task<double> HandleExpression(BinaryExpression binaryExpression, Dictionary<Expression, Lazy<Task<double>>> nodes)
+    private static async Task<double> HandleExpression(BinaryExpression binaryExpression)
     {
-        await Task.WhenAll(nodes[binaryExpression.Left].Value, nodes[binaryExpression.Right].Value);
+        await Task.WhenAll(_nodes[binaryExpression.Left].Value, _nodes[binaryExpression.Right].Value);
         await Task.Delay(1000);
-        return GetExpressionResult(binaryExpression, await nodes[binaryExpression.Left].Value,
-            await nodes[binaryExpression.Right].Value);
+        return GetExpressionResult(binaryExpression, await _nodes[binaryExpression.Left].Value,
+            await _nodes[binaryExpression.Right].Value);
     } 
     
-    private static async Task<double> HandleExpression(ConstantExpression constantExpression, Dictionary<Expression, Lazy<Task<double>>> nodes)
+    private static async Task<double> HandleExpression(ConstantExpression constantExpression)
     {
         return (double)constantExpression.Value;
     }

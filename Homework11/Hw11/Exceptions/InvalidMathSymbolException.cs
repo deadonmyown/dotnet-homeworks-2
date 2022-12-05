@@ -2,8 +2,5 @@
 
 public class InvalidSymbolException: Exception
 {
-	public InvalidSymbolException(string message)
-		: base(message)
-	{
-	}
+	public InvalidSymbolException(string message) : base(message) { }
 }
