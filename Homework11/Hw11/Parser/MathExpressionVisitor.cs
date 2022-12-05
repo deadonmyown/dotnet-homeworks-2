@@ -7,6 +7,7 @@ public static class MathExpressionVisitor
 {
     private static readonly Dictionary<Expression, Lazy<Task<double>>> _nodes = new();
     
+    [ExcludeFromCodeCoverage]
     public static async Task<double> VisitAsync(List<Expression> expressionList)
     {
         for (int i = 0; i < expressionList.Count; i++)
