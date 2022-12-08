@@ -8,10 +8,10 @@ public class Parser : IParser
     {
         return arg.ToLower() switch
         {
-            "plus" or "+" => Operation.Plus,
-            "minus" or "-" => Operation.Minus,
-            "multiply" or "*" => Operation.Multiply,
-            "divide" or "/" => Operation.Divide,
+            "plus" => Operation.Plus,
+            "minus" => Operation.Minus,
+            "multiply" => Operation.Multiply,
+            "divide" => Operation.Divide,
             _ => Operation.Invalid
         };
     }
