@@ -47,9 +47,11 @@ let webApp =
 type Startup() =
     member _.ConfigureServices (services : IServiceCollection) =
         services.AddGiraffe() |> ignore
+        services.AddMiniProfiler() |> ignore
 
     member _.Configure (app : IApplicationBuilder) (_ : IHostEnvironment) (_ : ILoggerFactory) =
         app.UseGiraffe webApp
+        app.UseMiniProfiler().UseGiraffe webApp
         
 [<ExcludeFromCodeCoverage>]
 [<EntryPoint>]
