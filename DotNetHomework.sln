@@ -25,15 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw13.Tests", "Homework13\Hw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw10", "Homework10\Hw10\Hw10.csproj", "{6C41EF57-CF4A-4219-9B3D-A2D60F54214C}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Hw6", "Homework6\Hw6\Hw6.fsproj", "{CC9CFF41-41AD-4C4B-83F4-853C2DB70FB6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw6Tests", "Homework6\Hw6.Tests\Hw6Tests.csproj", "{6E9473A5-1043-4797-9944-A7C9608A083D}"
-EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Hw6Client", "Homework6\Hw6Client\Hw6Client.fsproj", "{F6AF711C-E3FE-4523-AA04-7D877F7C19F0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw8", "Homework8\Hw8\Hw8.csproj", "{CD478E35-B113-4B89-B2B6-7C04DCEB68D7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw8.Tests", "Homework8\Hw8.Tests\Hw8.Tests.csproj", "{55F49D4F-54E1-4559-BC08-C2CE926D53F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw10.Tests", "Homework10\Hw10.Tests\Hw10.Tests.csproj", "{38BA36C9-2A40-4077-BE21-DC19F37F4802}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +45,10 @@ Global
 		{6C41EF57-CF4A-4219-9B3D-A2D60F54214C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C41EF57-CF4A-4219-9B3D-A2D60F54214C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C41EF57-CF4A-4219-9B3D-A2D60F54214C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38BA36C9-2A40-4077-BE21-DC19F37F4802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38BA36C9-2A40-4077-BE21-DC19F37F4802}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38BA36C9-2A40-4077-BE21-DC19F37F4802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38BA36C9-2A40-4077-BE21-DC19F37F4802}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{55A6CAA6-16E2-474E-8882-62BCF3712CA7} = {C7D8B4A4-35B9-4D97-A54F-8DD80BC30E38}

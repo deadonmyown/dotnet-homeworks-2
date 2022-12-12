@@ -19,6 +19,9 @@ public class MathCachedCalculatorService : IMathCalculatorService
 
 	public async Task<CalculationMathExpressionResultDto> CalculateMathExpressionAsync(string? expression)
 	{
+		if (expression is null)
+			return await _simpleCalculator.CalculateMathExpressionAsync(expression);
+		
 		if (_memoryCache.TryGetValue(expression, out double result))
 			return new CalculationMathExpressionResultDto(result);
 		

@@ -13,8 +13,7 @@ namespace Hw10
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllersWithViews();
-            builder.Services.AddMemoryCache();
+            builder.Services.AddMemoryCache().AddControllersWithViews();
             builder.Services
                 .AddMathCalculator()
                 .AddCachedMathCalculator();
