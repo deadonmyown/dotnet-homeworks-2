@@ -12,7 +12,7 @@ public static class MathExpressionVisitor
         for(int i = 0; i < expressionList.Count; i++)
         {
             var index = i;
-            nodes[expressionList[i]] = new Lazy<Task<double>>(async () =>
+            nodes[expressionList[index]] = new Lazy<Task<double>>(async () =>
             {
                 if (expressionList[index] is BinaryExpression binaryExpression)
                 {
