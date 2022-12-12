@@ -18,7 +18,7 @@ namespace Hw10
             builder.Services
                 .AddMathCalculator()
                 .AddCachedMathCalculator();
-
+            
             /*builder.Services.AddDbContext<ApplicationContext>(options =>
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));*/
 
